@@ -20,8 +20,7 @@ create or replace TABLE IF NOT EXISTS AN_TCPROXYDOC_P.employees
    ( dept_id NUMBER(4),
    department_name VARCHAR(30) NOT NULL,
    manager_id NUMBER(6),
-   location_id NUMBER(4),
-   PRIMARY KEY (dept_id)
+   location_id NUMBER(4)
    ) ;
 
    -- Insert data into tables
