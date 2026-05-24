@@ -1,28 +1,27 @@
 
-CREATE or replace SCHEMA IF NOT EXISTS ANALYTICSLAYER.AN_TCPROXYDOC_P;
+create or replace SCHEMA IF NOT EXISTS ANALYTICSLAYER.AN_TCPROXYDOC_P;
 
 
-CREATE TABLE IF NOT EXISTS AN_TCPROXYDOC_P.employees
-   ( ANALYTICSLAYERloyee_id NUMBER(6)
-   , first_name VARCHAR(20)
-   , last_name VARCHAR(25) NOT NULL
-   , email VARCHAR(25) NOT NULL
-   , phone_number VARCHAR(20)
-   , hire_date DATE NOT NULL
-   , job_id VARCHAR(10) NOT NULL
-   , salary NUMBER(8,2)
-   , commission_pct NUMBER(2,2)
-   , manager_id NUMBER(6)
-   , dept_id NUMBER(4)
-   , PRIMARY KEY (ANALYTICSLAYERloyee_id)
-   ) ;
+create TABLE IF NOT EXISTS AN_TCPROXYDOC_P.employees
+   ( emp_id NUMBER(6), 
+   first_name VARCHAR(20),
+   last_name VARCHAR(25) NOT NULL,
+   email VARCHAR(25) NOT NULL,
+   phone_number VARCHAR(20),
+   hire_date DATE NOT NULL,
+   job_id VARCHAR(10) NOT NULL,
+   salary NUMBER(8,2),
+   commission_pct NUMBER(2,2),
+   manager_id NUMBER(6),
+   dept_id NUMBER(4)   
+   );
 
-   CREATE TABLE IF NOT EXISTS AN_TCPROXYDOC_P.departments
-   ( dept_id NUMBER(4)
-   , department_name VARCHAR(30) NOT NULL
-   , manager_id NUMBER(6)
-   , location_id NUMBER(4)
-   ,PRIMARY KEY (dept_id)
+   create TABLE IF NOT EXISTS AN_TCPROXYDOC_P.departments
+   ( dept_id NUMBER(4),
+   department_name VARCHAR(30) NOT NULL,
+   manager_id NUMBER(6),
+   location_id NUMBER(4),
+   PRIMARY KEY (dept_id)
    ) ;
 
    -- Insert data into tables
@@ -36,8 +35,7 @@ INSERT INTO AN_TCPROXYDOC_P.employees VALUES
    ( 106,  'Jamuna',  'Kumari',  'KJAMUNA',  '590.423.4560',  TO_DATE('05-FEB-1998', 'dd-MON-yyyy'),  'IT_PRG',  4800,  NULL,  103,  60),
    ( 107,  'Jaya',  'Prakash',  'PJAYA',  '590.423.5567',  TO_DATE('07-FEB-1999', 'dd-MON-yyyy'),  'IT_PRG',  4200,  NULL,  103,  60),
    ( 108,  'Raja',  'Krishna',  'RKRISHNA',  '613.234.4569',  TO_DATE('17-AUG-1994', 'dd-MON-yyyy'),  'GI_MGR',  12000,  NULL,  101,  100),
-   ( 109,  'Mohan',  'Chandra',  'MCHANDRA',  '613.234.4169',  TO_DATE('16-AUG-1994', 'dd-MON-yyyy'),  'GI_ACCOUNT',  9000,  NULL,  108,  100)
-;
+   ( 109,  'Mohan',  'Chandra',  'MCHANDRA',  '613.234.4169',  TO_DATE('16-AUG-1994', 'dd-MON-yyyy'),  'GI_ACCOUNT',  9000,  NULL,  108,  100);
 
 INSERT INTO AN_TCPROXYDOC_P.departments VALUES 
    ( 10, 'Administration', 200, 1700), 
