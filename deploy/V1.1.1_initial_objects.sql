@@ -1,8 +1,8 @@
 
-create or replace SCHEMA IF NOT EXISTS ANALYTICSLAYER.AN_TCPROXYDOC_P;
+create or REPLACE SCHEMA IF NOT EXISTS ANALYTICSLAYER.AN_TCPROXYDOC_P;
 
 
-create or replace TABLE IF NOT EXISTS AN_TCPROXYDOC_P.employees
+create or REPLACE TABLE IF NOT EXISTS AN_TCPROXYDOC_P.employees
    ( emp_id NUMBER(6), 
    first_name VARCHAR(20),
    last_name VARCHAR(25) NOT NULL,
@@ -16,7 +16,7 @@ create or replace TABLE IF NOT EXISTS AN_TCPROXYDOC_P.employees
    dept_id NUMBER(4)   
    );
 
-   create or replace TABLE IF NOT EXISTS AN_TCPROXYDOC_P.departments
+   create or REPLACE TABLE IF NOT EXISTS AN_TCPROXYDOC_P.departments
    ( dept_id NUMBER(4),
    department_name VARCHAR(30) NOT NULL,
    manager_id NUMBER(6),
