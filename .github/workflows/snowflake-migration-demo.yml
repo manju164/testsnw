@@ -45,7 +45,7 @@ jobs:
           echo "Step 2: Writing deploy/connections.toml"
           echo "$SNOWFLAKE_PRIVATE_KEY" > /tmp/private_key.p8
           chmod 0600 /tmp/private_key.p8
-          printf '%s\n' '[default]' 'type = "snowflake"' 'account = "'$SF_ACCOUNT'"' 'user = "'$SF_USERNAME'"' 'role = "'$SF_ROLE'"' 'warehouse = "'$SF_WAREHOUSE'"' 'database = "'$SF_DATABASE'"' 'schema = "'$SF_DATABASE'"' 'private_key_path = "/tmp/private_key.p8"' 'private_key_passphrase = "'$SNOWFLAKE_PRIVATE_KEY_PASSPHRASE'"' > $GITHUB_WORKSPACE/deploy/connections.toml
+          printf '%s\n' '[default]' 'account = "'$SF_ACCOUNT'"' 'user = "'$SF_USERNAME'"' 'role = "'$SF_ROLE'"' 'warehouse = "'$SF_WAREHOUSE'"' 'database = "'$SF_DATABASE'"' 'private_key_file = "/tmp/private_key.p8"' 'private_key_passphrase = "'$SNOWFLAKE_PRIVATE_KEY_PASSPHRASE'"' > $GITHUB_WORKSPACE/deploy/connections.toml
           chmod 0600 $GITHUB_WORKSPACE/deploy/connections.toml
  
           echo "Step 3: Running schemachange"
