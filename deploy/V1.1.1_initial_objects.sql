@@ -1,9 +1,8 @@
-
-create or REPLACE SCHEMA IF NOT EXISTS ANALYTICSLAYER.AN_TCPROXYDOC_P;
-
-
-create or REPLACE TABLE IF NOT EXISTS AN_TCPROXYDOC_P.employees
-   ( emp_id NUMBER(6), 
+CREATE SCHEMA IF NOT EXISTS ANALYTICSLAYER.AN_TCPROXYDOC_P;
+ 
+ 
+CREATE TABLE IF NOT EXISTS AN_TCPROXYDOC_P.employees
+   ( emp_id NUMBER(6),
    first_name VARCHAR(20),
    last_name VARCHAR(25) NOT NULL,
    email VARCHAR(25) NOT NULL,
@@ -13,18 +12,18 @@ create or REPLACE TABLE IF NOT EXISTS AN_TCPROXYDOC_P.employees
    salary NUMBER(8,2),
    commission_pct NUMBER(2,2),
    manager_id NUMBER(6),
-   dept_id NUMBER(4)   
+   dept_id NUMBER(4)  
    );
-
-   create or REPLACE TABLE IF NOT EXISTS AN_TCPROXYDOC_P.departments
+ 
+CREATE TABLE IF NOT EXISTS AN_TCPROXYDOC_P.departments
    ( dept_id NUMBER(4),
    department_name VARCHAR(30) NOT NULL,
    manager_id NUMBER(6),
    location_id NUMBER(4)
    ) ;
-
+ 
    -- Insert data into tables
-INSERT INTO AN_TCPROXYDOC_P.employees VALUES 
+INSERT INTO AN_TCPROXYDOC_P.employees VALUES
    ( 100,  'Ramana',  'Rao',  'RRAO',  '420.271.4567',  TO_DATE('17-JUN-1987', 'dd-MON-yyyy'),  'ADM_PRES',  24000,  NULL,  NULL,  90),
    ( 101,  'Devi',  'Kapoor',  'DKAPOOR',  '420.271.4568',  TO_DATE('21-SEP-1989', 'dd-MON-yyyy'),  'ADM_VP',  17000,  NULL,  100,  90),
    ( 102,  'Nagesh',  'Reddy',  'RNAGESH',  '420.271.4569',  TO_DATE('13-JAN-1993', 'dd-MON-yyyy'),  'ADM_VP',  17000,  NULL,  100,  90),
@@ -35,12 +34,12 @@ INSERT INTO AN_TCPROXYDOC_P.employees VALUES
    ( 107,  'Jaya',  'Prakash',  'PJAYA',  '590.423.5567',  TO_DATE('07-FEB-1999', 'dd-MON-yyyy'),  'IT_PRG',  4200,  NULL,  103,  60),
    ( 108,  'Raja',  'Krishna',  'RKRISHNA',  '613.234.4569',  TO_DATE('17-AUG-1994', 'dd-MON-yyyy'),  'GI_MGR',  12000,  NULL,  101,  100),
    ( 109,  'Mohan',  'Chandra',  'MCHANDRA',  '613.234.4169',  TO_DATE('16-AUG-1994', 'dd-MON-yyyy'),  'GI_ACCOUNT',  9000,  NULL,  108,  100);
-
-INSERT INTO AN_TCPROXYDOC_P.departments VALUES 
-   ( 10, 'Administration', 200, 1700), 
+ 
+INSERT INTO AN_TCPROXYDOC_P.departments VALUES
+   ( 10, 'Administration', 200, 1700),
    ( 20, 'Marketing', 201, 1800),
    ( 30, 'Purchasing', 114, 1700),
-   ( 40, 'Human Resources', 203, 2400), 
+   ( 40, 'Human Resources', 203, 2400),
    ( 50, 'Shipping', 121, 1500),
    ( 60 , 'IT', 103, 1400),
    ( 70 , 'Public Relations', 204, 2700),
