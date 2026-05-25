@@ -72,4 +72,4 @@ jobs:
                     sed -i 's/private_key_passphrase = .*/&\nprivate_key_path = "\/tmp\/private_key.p8"/' $GITHUB_WORKSPACE/deploy/connections.toml
 
                     echo "Step 3: Running schemachange"
-                    schemachange -f $GITHUB_WORKSPACE/deploy --connection default -c $SF_DATABASE.SCHEMACHANGE.CHANGE_HISTORY --create-change-history-table
+          schemachange deploy -f $GITHUB_WORKSPACE/deploy --connections-file-path $GITHUB_WORKSPACE/deploy/connections.toml --connection-name default -c $SF_DATABASE.SCHEMACHANGE.CHANGE_HISTORY --create-change-history-table
