@@ -57,19 +57,21 @@ jobs:
           pip install schemachange
 
           echo "Step 2: Writing deploy/connections.toml"
+          echo "$SNOWFLAKE_PRIVATE_KEY" > /tmp/private_key.p8
+          chmod 0600 /tmp/private_key.p8
           cat > $GITHUB_WORKSPACE/deploy/connections.toml <<'EOFTOML'
-
-          type = "snowflake"
-          account = "$SF_ACCOUNT"
-          user = "$SF_USERNAME"
-          role = "$SF_ROLE"
-          warehouse = "$SF_WAREHOUSE"
-          database = "$SF_DATABASE"
-          schema = "$SF_DATABASE"
-          private_key_passphrase = "$SNOWFLAKE_PRIVATE_KEY_PASSPHRASE"
-          EOFTOML
-                    echo "$SNOWFLAKE_PRIVATE_KEY" > /tmp/private_key.p8
-                    sed -i 's/private_key_passphrase = .*/&\nprivate_key_path = "\/tmp\/private_key.p8"/' $GITHUB_WORKSPACE/deploy/connections.toml
+[default]
+type = "snowflake"
+account = "$SF_ACCOUNT"
+user = "$SF_USERNAME"
+role = "$SF_ROLE"
+warehouse = "$SF_WAREHOUSE"
+database = "$SF_DATABASE"
+schema = "$SF_DATABASE"
+private_key_path = "/tmp/private_key.p8"
+private_key_passphrase = "$SNOWFLAKE_PRIVATE_KEY_PASSPHRASE"
+EOFTOML
+          chmod 0600 $GITHUB_WORKSPACE/deploy/connections.toml
 
                     echo "Step 3: Running schemachange"
           schemachange deploy -f $GITHUB_WORKSPACE/deploy --connections-file-path $GITHUB_WORKSPACE/deploy/connections.toml --connection-name default -c $SF_DATABASE.SCHEMACHANGE.CHANGE_HISTORY --create-change-history-table
