@@ -25,6 +25,20 @@ jobs:
         with:
           python-version: 3.8.x
 
+      - name: Setup Snowflake connections.toml
+        run: |
+          mkdir -p ~/.snowflake
+          cat > ~/.snowflake/connections.toml << 'EOF'
+          [default]
+          account = "${{ secrets.SF_ACCOUNT }}"
+          user = "${{ secrets.SF_USERNAME }}"
+          password = "${{ secrets.SF_PASSWORD }}"
+          role = "${{ secrets.SF_ROLE }}"
+          warehouse = "${{ secrets.SF_WAREHOUSE }}"
+          database = "${{ secrets.SF_DATABASE }}"
+          EOF
+          chmod 600 ~/.snowflake/connections.toml
+
       - name: Run schemachange
         env:
           SF_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
